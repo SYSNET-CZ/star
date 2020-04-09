@@ -93,6 +93,11 @@ services:
     environment:
       - DS_RO_PASS=${DATASTORE_READONLY_PASSWORD}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - LANG=cs_CZ.UTF-8
+      - LANGUAGE=cs_CZ.UTF-8
+      - LC_ALL=cs_CZ.UTF-8
+    ports:
+      - 5432:5432
     volumes:
       - pg_data:/var/lib/postgresql/data
     networks:
