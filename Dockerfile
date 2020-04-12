@@ -45,7 +45,6 @@ RUN mkdir -p $CKAN_VENV $CKAN_CONFIG $CKAN_STORAGE_PATH && \
 # Setup CKAN
 ADD . $CKAN_VENV/src/ckan/
 RUN mv $CKAN_VENV/src/ckan/ckanext-mzp $CKAN_VENV/src
-RUN mv $CKAN_VENV/src/ckan/ckanext-scheming $CKAN_VENV/src
 RUN mv $CKAN_VENV/src/ckan/ckanext-hierarchy $CKAN_VENV/src
 RUN mv $CKAN_VENV/src/ckan/ckanext-validation $CKAN_VENV/src
 RUN ckan-pip install -U pip && \
@@ -58,8 +57,8 @@ RUN ckan-pip install -U pip && \
 ############### plugin MZP ############### 
     ckan-pip install -e $CKAN_VENV/src/ckanext-hierarchy && \
     ckan-pip install -e $CKAN_VENV/src/ckanext-mzp && \
+    ckan-pip install -e "git+https://github.com/ckan/ckanext-scheming.git#egg=ckanext-scheming" && \
     ckan-pip install -r $CKAN_VENV/src/ckanext-scheming/requirements.txt && \
-    ckan-pip install -e $CKAN_VENV/src/ckanext-scheming && \
 #    ckan-pip install -e "git+https://github.com/frictionlessdata/ckanext-validation.git#egg=ckanext-validation" && \
     ckan-pip install -r $CKAN_VENV/src/ckanext-validation/requirements.txt && \
     ckan-pip install -e $CKAN_VENV/src/ckanext-validation && \
